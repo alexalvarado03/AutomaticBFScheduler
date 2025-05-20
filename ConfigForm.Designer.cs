@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            createConfigBtn = new Button();
+            nextBtn = new Button();
             smallSilverTB = new TextBox();
             caseSizeLbl = new Label();
             smallSilverLbl = new Label();
@@ -41,7 +41,7 @@
             amountLbl = new Label();
             largeLbl = new Label();
             largeTB = new TextBox();
-            errorLbl = new Label();
+            caseErrorLbl = new Label();
             label1 = new Label();
             label2 = new Label();
             smallInfraRadioBtn = new RadioButton();
@@ -51,25 +51,32 @@
             linenRadioBtnHolder = new GroupBox();
             numberLinensLbl = new Label();
             numLinenComboBox = new ComboBox();
-            longLinenRadioBtn = new RadioButton();
-            customLinenRadioBtn = new RadioButton();
-            standardLinenRadioBtn = new RadioButton();
             label3 = new Label();
             label4 = new Label();
             tableTopFairCheckBox = new CheckBox();
+            minMaxCashRangeLbl = new Label();
+            minRangeLbl = new Label();
+            maxRangeLbl = new Label();
+            minRangeTB = new TextBox();
+            maxRangeTB = new TextBox();
+            dollarSignLbl1 = new Label();
+            dollarSignLbl2 = new Label();
+            cashRangeErrorLbl = new Label();
+            completeFormLbl = new Label();
             infraRadioBtnHolder.SuspendLayout();
             linenRadioBtnHolder.SuspendLayout();
             SuspendLayout();
             // 
-            // createConfigBtn
+            // nextBtn
             // 
-            createConfigBtn.Location = new Point(582, 719);
-            createConfigBtn.Margin = new Padding(4);
-            createConfigBtn.Name = "createConfigBtn";
-            createConfigBtn.Size = new Size(275, 29);
-            createConfigBtn.TabIndex = 0;
-            createConfigBtn.Text = "Create Config";
-            createConfigBtn.UseVisualStyleBackColor = true;
+            nextBtn.Location = new Point(576, 622);
+            nextBtn.Margin = new Padding(4);
+            nextBtn.Name = "nextBtn";
+            nextBtn.Size = new Size(275, 29);
+            nextBtn.TabIndex = 0;
+            nextBtn.Text = "Next";
+            nextBtn.UseVisualStyleBackColor = true;
+            nextBtn.Click += nextBtn_Click;
             // 
             // smallSilverTB
             // 
@@ -198,15 +205,15 @@
             largeTB.Text = "0";
             largeTB.TextChanged += CaseTextBox_TextChanged;
             // 
-            // errorLbl
+            // caseErrorLbl
             // 
-            errorLbl.AutoSize = true;
-            errorLbl.ForeColor = SystemColors.ControlText;
-            errorLbl.Location = new Point(137, 605);
-            errorLbl.Margin = new Padding(4, 0, 4, 0);
-            errorLbl.Name = "errorLbl";
-            errorLbl.Size = new Size(0, 19);
-            errorLbl.TabIndex = 13;
+            caseErrorLbl.AutoSize = true;
+            caseErrorLbl.ForeColor = SystemColors.ControlText;
+            caseErrorLbl.Location = new Point(137, 605);
+            caseErrorLbl.Margin = new Padding(4, 0, 4, 0);
+            caseErrorLbl.Name = "caseErrorLbl";
+            caseErrorLbl.Size = new Size(0, 19);
+            caseErrorLbl.TabIndex = 13;
             // 
             // label1
             // 
@@ -274,12 +281,9 @@
             // 
             linenRadioBtnHolder.Controls.Add(numberLinensLbl);
             linenRadioBtnHolder.Controls.Add(numLinenComboBox);
-            linenRadioBtnHolder.Controls.Add(longLinenRadioBtn);
-            linenRadioBtnHolder.Controls.Add(customLinenRadioBtn);
-            linenRadioBtnHolder.Controls.Add(standardLinenRadioBtn);
             linenRadioBtnHolder.Location = new Point(598, 341);
             linenRadioBtnHolder.Name = "linenRadioBtnHolder";
-            linenRadioBtnHolder.Size = new Size(237, 293);
+            linenRadioBtnHolder.Size = new Size(237, 142);
             linenRadioBtnHolder.TabIndex = 22;
             linenRadioBtnHolder.TabStop = false;
             // 
@@ -287,7 +291,7 @@
             // 
             numberLinensLbl.AutoSize = true;
             numberLinensLbl.Font = new Font("Times New Roman", 12F);
-            numberLinensLbl.Location = new Point(45, 194);
+            numberLinensLbl.Location = new Point(45, 37);
             numberLinensLbl.Margin = new Padding(4, 0, 4, 0);
             numberLinensLbl.Name = "numberLinensLbl";
             numberLinensLbl.Size = new Size(121, 19);
@@ -298,43 +302,12 @@
             // 
             numLinenComboBox.FormattingEnabled = true;
             numLinenComboBox.Items.AddRange(new object[] { "6", "10", ">10" });
-            numLinenComboBox.Location = new Point(45, 243);
+            numLinenComboBox.Location = new Point(45, 86);
             numLinenComboBox.Name = "numLinenComboBox";
             numLinenComboBox.Size = new Size(121, 27);
             numLinenComboBox.TabIndex = 19;
             numLinenComboBox.Text = "--Select--";
-            // 
-            // longLinenRadioBtn
-            // 
-            longLinenRadioBtn.AutoSize = true;
-            longLinenRadioBtn.Location = new Point(45, 85);
-            longLinenRadioBtn.Name = "longLinenRadioBtn";
-            longLinenRadioBtn.Size = new Size(95, 23);
-            longLinenRadioBtn.TabIndex = 17;
-            longLinenRadioBtn.Text = "Long Linen";
-            longLinenRadioBtn.UseVisualStyleBackColor = true;
-            // 
-            // customLinenRadioBtn
-            // 
-            customLinenRadioBtn.AutoSize = true;
-            customLinenRadioBtn.Location = new Point(45, 143);
-            customLinenRadioBtn.Name = "customLinenRadioBtn";
-            customLinenRadioBtn.Size = new Size(111, 23);
-            customLinenRadioBtn.TabIndex = 18;
-            customLinenRadioBtn.Text = "Custom Linen";
-            customLinenRadioBtn.UseVisualStyleBackColor = true;
-            // 
-            // standardLinenRadioBtn
-            // 
-            standardLinenRadioBtn.AutoSize = true;
-            standardLinenRadioBtn.Checked = true;
-            standardLinenRadioBtn.Location = new Point(45, 29);
-            standardLinenRadioBtn.Name = "standardLinenRadioBtn";
-            standardLinenRadioBtn.Size = new Size(119, 23);
-            standardLinenRadioBtn.TabIndex = 16;
-            standardLinenRadioBtn.TabStop = true;
-            standardLinenRadioBtn.Text = "Standard Linen";
-            standardLinenRadioBtn.UseVisualStyleBackColor = true;
+            numLinenComboBox.SelectedIndexChanged += numLinenComboBox_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -365,13 +338,106 @@
             tableTopFairCheckBox.TabIndex = 23;
             tableTopFairCheckBox.Text = "Table Top Fair";
             tableTopFairCheckBox.UseVisualStyleBackColor = true;
-            tableTopFairCheckBox.CheckedChanged += tableTopFairCheckBox_CheckedChanged;
+            tableTopFairCheckBox.CheckedChanged += TableTopFairCheckBox_CheckedChanged;
+            // 
+            // minMaxCashRangeLbl
+            // 
+            minMaxCashRangeLbl.AutoSize = true;
+            minMaxCashRangeLbl.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            minMaxCashRangeLbl.Location = new Point(1030, 33);
+            minMaxCashRangeLbl.Name = "minMaxCashRangeLbl";
+            minMaxCashRangeLbl.Size = new Size(245, 26);
+            minMaxCashRangeLbl.TabIndex = 24;
+            minMaxCashRangeLbl.Text = "Min/Max Cash Range:";
+            // 
+            // minRangeLbl
+            // 
+            minRangeLbl.AutoSize = true;
+            minRangeLbl.Font = new Font("Times New Roman", 12F);
+            minRangeLbl.Location = new Point(1030, 111);
+            minRangeLbl.Margin = new Padding(4, 0, 4, 0);
+            minRangeLbl.Name = "minRangeLbl";
+            minRangeLbl.Size = new Size(78, 19);
+            minRangeLbl.TabIndex = 25;
+            minRangeLbl.Text = "Min Range:";
+            // 
+            // maxRangeLbl
+            // 
+            maxRangeLbl.AutoSize = true;
+            maxRangeLbl.Font = new Font("Times New Roman", 12F);
+            maxRangeLbl.Location = new Point(1030, 167);
+            maxRangeLbl.Margin = new Padding(4, 0, 4, 0);
+            maxRangeLbl.Name = "maxRangeLbl";
+            maxRangeLbl.Size = new Size(82, 19);
+            maxRangeLbl.TabIndex = 26;
+            maxRangeLbl.Text = "Max Range:";
+            // 
+            // minRangeTB
+            // 
+            minRangeTB.Location = new Point(1161, 108);
+            minRangeTB.Name = "minRangeTB";
+            minRangeTB.Size = new Size(143, 26);
+            minRangeTB.TabIndex = 27;
+            minRangeTB.Text = "0";
+            minRangeTB.TextChanged += CashRange_TextChanged;
+            // 
+            // maxRangeTB
+            // 
+            maxRangeTB.Location = new Point(1161, 164);
+            maxRangeTB.Name = "maxRangeTB";
+            maxRangeTB.Size = new Size(143, 26);
+            maxRangeTB.TabIndex = 28;
+            maxRangeTB.Text = "0";
+            maxRangeTB.TextChanged += CashRange_TextChanged;
+            // 
+            // dollarSignLbl1
+            // 
+            dollarSignLbl1.AutoSize = true;
+            dollarSignLbl1.Location = new Point(1138, 115);
+            dollarSignLbl1.Name = "dollarSignLbl1";
+            dollarSignLbl1.Size = new Size(17, 19);
+            dollarSignLbl1.TabIndex = 29;
+            dollarSignLbl1.Text = "$";
+            // 
+            // dollarSignLbl2
+            // 
+            dollarSignLbl2.AutoSize = true;
+            dollarSignLbl2.Location = new Point(1138, 167);
+            dollarSignLbl2.Name = "dollarSignLbl2";
+            dollarSignLbl2.Size = new Size(17, 19);
+            dollarSignLbl2.TabIndex = 30;
+            dollarSignLbl2.Text = "$";
+            // 
+            // cashRangeErrorLbl
+            // 
+            cashRangeErrorLbl.AutoSize = true;
+            cashRangeErrorLbl.Location = new Point(1112, 234);
+            cashRangeErrorLbl.Name = "cashRangeErrorLbl";
+            cashRangeErrorLbl.Size = new Size(0, 19);
+            cashRangeErrorLbl.TabIndex = 31;
+            // 
+            // completeFormLbl
+            // 
+            completeFormLbl.AutoSize = true;
+            completeFormLbl.Location = new Point(643, 699);
+            completeFormLbl.Name = "completeFormLbl";
+            completeFormLbl.Size = new Size(0, 19);
+            completeFormLbl.TabIndex = 32;
             // 
             // ConfigForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1565, 822);
+            ClientSize = new Size(1584, 811);
+            Controls.Add(completeFormLbl);
+            Controls.Add(cashRangeErrorLbl);
+            Controls.Add(dollarSignLbl2);
+            Controls.Add(dollarSignLbl1);
+            Controls.Add(maxRangeTB);
+            Controls.Add(minRangeTB);
+            Controls.Add(maxRangeLbl);
+            Controls.Add(minRangeLbl);
+            Controls.Add(minMaxCashRangeLbl);
             Controls.Add(tableTopFairCheckBox);
             Controls.Add(linenRadioBtnHolder);
             Controls.Add(label3);
@@ -379,7 +445,7 @@
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(errorLbl);
+            Controls.Add(caseErrorLbl);
             Controls.Add(largeLbl);
             Controls.Add(largeTB);
             Controls.Add(amountLbl);
@@ -392,11 +458,11 @@
             Controls.Add(smallSilverLbl);
             Controls.Add(caseSizeLbl);
             Controls.Add(smallSilverTB);
-            Controls.Add(createConfigBtn);
+            Controls.Add(nextBtn);
             Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             Name = "ConfigForm";
-            Text = "Form1";
+            Text = "ConfigForm";
             Load += ConfigForm_Load;
             infraRadioBtnHolder.ResumeLayout(false);
             infraRadioBtnHolder.PerformLayout();
@@ -408,7 +474,7 @@
 
         #endregion
 
-        private Button createConfigBtn;
+        private Button nextBtn;
         private TextBox smallSilverTB;
         private Label caseSizeLbl;
         private Label smallSilverLbl;
@@ -421,7 +487,7 @@
         private Label amountLbl;
         private Label largeLbl;
         private TextBox largeTB;
-        private Label errorLbl;
+        private Label caseErrorLbl;
         private Label label1;
         private Label label2;
         private RadioButton smallInfraRadioBtn;
@@ -429,13 +495,19 @@
         private RadioButton customRadioBtn;
         private GroupBox infraRadioBtnHolder;
         private GroupBox linenRadioBtnHolder;
-        private RadioButton longLinenRadioBtn;
-        private RadioButton customLinenRadioBtn;
-        private RadioButton standardLinenRadioBtn;
         private Label label3;
         private Label label4;
         private ComboBox numLinenComboBox;
         private Label numberLinensLbl;
         private CheckBox tableTopFairCheckBox;
+        private Label minMaxCashRangeLbl;
+        private Label minRangeLbl;
+        private Label maxRangeLbl;
+        private TextBox minRangeTB;
+        private TextBox maxRangeTB;
+        private Label dollarSignLbl1;
+        private Label dollarSignLbl2;
+        private Label cashRangeErrorLbl;
+        private Label completeFormLbl;
     }
 }
