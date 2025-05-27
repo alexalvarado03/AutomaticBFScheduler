@@ -393,7 +393,7 @@
             // dollarSignLbl1
             // 
             dollarSignLbl1.AutoSize = true;
-            dollarSignLbl1.Location = new Point(1138, 115);
+            dollarSignLbl1.Location = new Point(1138, 111);
             dollarSignLbl1.Name = "dollarSignLbl1";
             dollarSignLbl1.Size = new Size(17, 19);
             dollarSignLbl1.TabIndex = 29;

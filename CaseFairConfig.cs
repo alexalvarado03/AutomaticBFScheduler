@@ -16,13 +16,18 @@ using System.Windows.Forms;
 
 namespace BFConfigApp
 {
-    public partial class Form1 : Form
+
+    
+    public partial class CaseFairConfig : Form
     {
+        private UserSession session; //session will hold the fair object
+
         private ConfigForm configFormRef;
-        public Form1(ConfigForm form)
+        public CaseFairConfig(ConfigForm form, UserSession session)
         {
             InitializeComponent();
             configFormRef = form;
+            this.session = session;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,7 +37,7 @@ namespace BFConfigApp
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             configFormRef.Show();
         }
     }

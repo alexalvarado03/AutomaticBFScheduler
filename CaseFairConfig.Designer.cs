@@ -1,6 +1,6 @@
 ﻿namespace BFConfigApp
 {
-    partial class Form1
+    partial class CaseFairConfig
     {
         /// <summary>
         /// Required designer variable.

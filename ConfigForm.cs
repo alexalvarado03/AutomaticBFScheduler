@@ -2,17 +2,18 @@
 /*******************************
  Code written by: Alex Alvarado
  This code is for Phoenix Book Company LLC.
- Last Edited: 5/20/2025
+ Last Edited: 5/27/2025
  ******************************/
 namespace BFConfigApp
 {
     public partial class ConfigForm : Form
     {
-        Form1 form1;
+        CaseFairConfig? caseFairConfig;
         // These bool values are responsible for moving forward to second page
         bool CaseCompleteValid = false;
         bool CashRangeCompleteValid = false;
         bool LinenComboBoxValid = false;
+        UserSession session = new UserSession();
         public ConfigForm()
         {
             InitializeComponent();
@@ -173,17 +174,20 @@ namespace BFConfigApp
             LinenComboBoxValid = true; //value just needs to change once to be valid
         }
 
+        //User is trying to move to next page
         private void nextBtn_Click(object sender, EventArgs e)
         {
-            if (form1 == null)
+
+            if (caseFairConfig == null || caseFairConfig.IsDisposed)
             {
-                form1 = new Form1(this);
+                caseFairConfig = new CaseFairConfig(this, session);
             }
             if(CaseCompleteValid && CashRangeCompleteValid && LinenComboBoxValid)
             {
+                SaveSession();
                 completeFormLbl.Text = "";
                 this.Hide();
-                form1.Show();
+                caseFairConfig.Show();
             }
             else
             {
@@ -191,6 +195,58 @@ namespace BFConfigApp
                 completeFormLbl.Text = "Please complete form.";
             }
 
+        }
+
+        //Function is responsible for saving session
+        private void SaveSession()
+        {
+            try
+            {
+                //Saves all the case numbers regardless of fair type
+                session.AllCaseNum["SmallSilver"] = int.Parse(smallSilverTB.Text);
+                session.AllCaseNum["SmallRainbow"] = int.Parse(smallRainbowTB.Text);
+                session.AllCaseNum["Medium"] = int.Parse(mediumTB.Text);
+                session.AllCaseNum["PebbleTop"] = int.Parse(mediumPebbleTB.Text);
+                session.AllCaseNum["Large"] = int.Parse(largeTB.Text);
+
+                if (tableTopFairCheckBox.Checked) //checks if the fair is table top or not
+                {
+                    session.IsTableTop = true;
+                }
+                else
+                {
+                    session.IsTableTop = false;
+                }
+
+                session.Linens = numLinenComboBox.SelectedItem?.ToString() ?? "Not selected"; //linens are saved
+
+                session.MaxCashRange = int.Parse(maxRangeTB.Text);//min and max range are saved
+                session.MinCashRange = int.Parse(minRangeTB.Text);
+
+                smallInfraRadioBtn.Tag = Infrastructure.Small;
+                largeInfraRadioBtn.Tag = Infrastructure.Large;
+                customRadioBtn.Tag = Infrastructure.Custom;
+
+                foreach (Control control in infraRadioBtnHolder.Controls)
+                {
+                    if (control is RadioButton radio && radio.Checked)
+                    {
+                        if (radio.Tag is Infrastructure infra)
+                        {
+                            session.selectedInfra = infra;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Selected radio button does not have a valid infrastructure value. Please check SaveSession.\n");
+                        }
+                            break;
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine($"There is an error in the save data please check here is the error:\n {err}\n");
+            }
         }
     }
 }
