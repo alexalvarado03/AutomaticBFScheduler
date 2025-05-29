@@ -32,13 +32,53 @@ namespace BFConfigApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            GenerateCaseConfigPage();
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Close();
             configFormRef.Show();
+        }
+
+        private void GenerateCaseConfigPage()
+        {
+            foreach (KeyValuePair<string, int> entry in session.AllCaseNum)
+            {
+                string name = entry.Key;
+                int numCases = entry.Value;
+                flowLayoutPanelHolder.Controls.Clear();
+
+                for (int i = 0; i < numCases; i++)
+                {
+                    Label CaseLabel = new Label();
+                    ComboBox CaseNameComboBox = new ComboBox();
+                    CaseNameComboBox.DataSource = Enum.GetValues(typeof(TypeOfCase));
+                    CaseNameComboBox.Name = $"CaseNameComboBox{i}";
+                    if(i == 0)
+                    {
+                        CaseLabel.Text = $"{name}";
+                        CaseLabel.Name = $"{name}Lbl";
+                    }
+                    else
+                    {
+                        CaseLabel.Text = $"{name}{i}";
+                        CaseLabel.Name = $"{name}{i}Lbl";
+                    }
+                    CaseLabel.AutoSize = true;
+                    CaseLabel.Margin = new Padding(5);
+                    flowLayoutPanelHolder.Controls.Add(CaseLabel);
+                    flowLayoutPanelHolder.Controls.Add(CaseNameComboBox);
+                }
+            }
+        }
+
+        private void GenerateHeader() //TODO: finish this method and create the data collection rows dynamically methods
+        {
+            string[] Headers = { "Initial Case Label", "Case Name", "Number Paperbacks per Title", "Number Paperback Titles", "Number Hardbacks per Title", "Number Hardcover Titles", "Total Number Titles",
+                                "Total Number Books", "Titles per Case"};
+            tableLayoutPanel.RowCount = Headers.Length;
+
         }
     }
 }
