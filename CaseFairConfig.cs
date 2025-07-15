@@ -43,11 +43,12 @@ namespace BFConfigApp
 
         private void GenerateCaseConfigPage()
         {
+            flowLayoutPanelHolder.Controls.Clear();
             foreach (KeyValuePair<string, int> entry in session.AllCaseNum)
             {
                 string name = entry.Key;
                 int numCases = entry.Value;
-                flowLayoutPanelHolder.Controls.Clear();
+                
 
                 for (int i = 0; i < numCases; i++)
                 {
@@ -62,7 +63,7 @@ namespace BFConfigApp
                     }
                     else
                     {
-                        CaseLabel.Text = $"{name}{i}";
+                        CaseLabel.Text = $"{name} {i}";
                         CaseLabel.Name = $"{name}{i}Lbl";
                     }
                     CaseLabel.AutoSize = true;
