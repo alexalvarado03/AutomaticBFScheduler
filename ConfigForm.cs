@@ -13,6 +13,7 @@ namespace BFConfigApp
         bool CaseCompleteValid = false;
         bool CashRangeCompleteValid = false;
         bool LinenComboBoxValid = false;
+        int TotalNumCases = 0;
         UserSession session = new UserSession();
         public ConfigForm()
         {
@@ -57,6 +58,7 @@ namespace BFConfigApp
                 //errorLbl.Text = "All valid.";
                 caseErrorLbl.Text = "";
                 CaseCompleteValid = true;
+                TotalNumCases = sum;
             }
             else if ((sum == 0) && (!tableTopFairCheckBox.Checked)) //Sum is 0 but Table Top Fair is unchecked; this is invalid
             {
@@ -74,6 +76,7 @@ namespace BFConfigApp
             {
                 caseErrorLbl.Text = "";
                 CaseCompleteValid = true;
+                TotalNumCases = 0;
             }
             else //Number not entered; Catches rest of cases could potentially need a fix if another combination is found
             {
@@ -222,6 +225,8 @@ namespace BFConfigApp
 
                 session.MaxCashRange = int.Parse(maxRangeTB.Text);//min and max range are saved
                 session.MinCashRange = int.Parse(minRangeTB.Text);
+
+                session.TotalCaseNum = TotalNumCases;
 
                 smallInfraRadioBtn.Tag = Infrastructure.Small;
                 largeInfraRadioBtn.Tag = Infrastructure.Large;

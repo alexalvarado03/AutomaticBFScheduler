@@ -40,6 +40,8 @@ namespace BFConfigApp
     {
         public Dictionary<string, int> AllCaseNum { get; set; } = new(); //holds the case type as key and number of those cases as value
 
+        public int TotalCaseNum { get; set; }   //Holds the total number of cases for this configuration
+
         public string Linens { get; set; } = string.Empty; //uses string as number of linens because can have >10 **Will be configured in later logic of app**
 
         public int MinCashRange { get; set; } //int value to hold Min Cash
@@ -51,14 +53,18 @@ namespace BFConfigApp
         public Infrastructure selectedInfra { get; set; } //enum that holds the infrastructure value
 
         public Dictionary<string, CaseTypeObject> CasesDataHolder { get; set; } = new(); //Dictionary to hold case object **Each case will need its own UNIQUE name**
+
+        public string ConfigurationName { get; set; } = string.Empty; // holds the name of the configuration
     }
 
     public class CaseTypeObject
     {
-        public TypeOfCase CaseType { get; set; } // Holds the type of fair
+        public TypeOfCase CaseType { get; set; } // Holds the type of case
 
         public string CaseName { get; set; } = string.Empty; //Holds the name of case
 
+        //Later features that i want to add including data for the cases that can be tracked
+    /*
         public int NumberPaperbackPerTitle { get; set; } //Holds value for number paperback per title
 
         public int NumberPaperbackTitle { get; set; } //Holds number of paperback titles desired
@@ -72,6 +78,7 @@ namespace BFConfigApp
         public int TotalNumberBooks { get; set; } //Holds total number of books
 
         public int TitlesPerCase { get; set; } //Holds number of titles per case
+    */
     }
 
 }
