@@ -20,12 +20,12 @@ namespace BFConfigApp
 
     public partial class CaseFairConfig : Form
     {
-        private UserSession session; //session will hold the fair object
+        private CaseBuildingUserSession session; //session will hold the fair object
 
         private ConfigForm configFormRef;
 
         private bool ConfigNameIsValid = false;
-        public CaseFairConfig(ConfigForm form, UserSession session)
+        public CaseFairConfig(ConfigForm form, CaseBuildingUserSession session)
         {
             InitializeComponent();
             configFormRef = form;

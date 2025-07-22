@@ -14,7 +14,7 @@ namespace BFConfigApp
         bool CashRangeCompleteValid = false;
         bool LinenComboBoxValid = false;
         int TotalNumCases = 0;
-        UserSession session = new UserSession();
+        CaseBuildingUserSession session = new CaseBuildingUserSession();
         public ConfigForm()
         {
             InitializeComponent();

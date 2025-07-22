@@ -35,8 +35,14 @@ namespace BFConfigApp
         Other
     }
 
-    //This class will hold the data objects for building a configuration
     public class UserSession
+    {
+        public int UserId { get; set; }
+        public string Username { get; set; } = string.Empty;
+    }
+
+    //This class will hold the data objects for building a configuration
+    public class CaseBuildingUserSession
     {
         public Dictionary<string, int> AllCaseNum { get; set; } = new(); //holds the case type as key and number of those cases as value
 
