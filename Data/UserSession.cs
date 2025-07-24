@@ -10,7 +10,7 @@ using System.Threading.Tasks;
  Last Edited: 5/29/2025
  ******************************/
 
-namespace BFConfigApp
+namespace BFConfigApp.Data
 {
     public enum Infrastructure
     {
@@ -61,6 +61,8 @@ namespace BFConfigApp
         public Dictionary<string, CaseTypeObject> CasesDataHolder { get; set; } = new(); //Dictionary to hold case object **Each case will need its own UNIQUE name**
 
         public string ConfigurationName { get; set; } = string.Empty; // holds the name of the configuration
+
+        public int ConfigurationId { get; set; } //holds the configuration Id which is used in storing the data
     }
 
     public class CaseTypeObject

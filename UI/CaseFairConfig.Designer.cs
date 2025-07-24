@@ -40,6 +40,7 @@
             // 
             // backBtn
             // 
+            backBtn.Font = new Font("Times New Roman", 12F);
             backBtn.Location = new Point(12, 12);
             backBtn.Name = "backBtn";
             backBtn.Size = new Size(75, 23);

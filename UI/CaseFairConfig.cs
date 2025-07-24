@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BFConfigApp.Data;
 
 /*******************************
  Code written by: Alex Alvarado
  This code is for Phoenix Book Company LLC.
- Last Edited: 5/20/2025
+ Last Edited: 7/24/2025
  ******************************/
 
 namespace BFConfigApp
@@ -20,16 +21,14 @@ namespace BFConfigApp
 
     public partial class CaseFairConfig : Form
     {
-        private CaseBuildingUserSession session; //session will hold the fair object
 
         private ConfigForm configFormRef;
 
         private bool ConfigNameIsValid = false;
-        public CaseFairConfig(ConfigForm form, CaseBuildingUserSession session)
+        public CaseFairConfig(ConfigForm form)
         {
             InitializeComponent();
             configFormRef = form;
-            this.session = session;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -48,7 +47,7 @@ namespace BFConfigApp
         private void GenerateCaseConfigPage()
         {
             flowLayoutPanelHolder.Controls.Clear(); //clears old labels if any
-            foreach (KeyValuePair<string, int> entry in session.AllCaseNum) //goes through all the values in session to generate all the cases
+            foreach (KeyValuePair<string, int> entry in SessionManager.CurrentCaseSession.AllCaseNum) //goes through all the values in session to generate all the cases
             {
                 string name = entry.Key;
                 int numCases = entry.Value;
@@ -93,8 +92,8 @@ namespace BFConfigApp
         {
             if (ConfigNameIsValid)
             {
-                session.ConfigurationName = ConfigurationNameTB.Text.Trim(); //saves config name
-                foreach (KeyValuePair<string, int> entry in session.AllCaseNum) //saves the selected items from the drop downs for each case
+                SessionManager.CurrentCaseSession.ConfigurationName = ConfigurationNameTB.Text.Trim(); //saves config name
+                foreach (KeyValuePair<string, int> entry in SessionManager.CurrentCaseSession.AllCaseNum) //saves the selected items from the drop downs for each case
                 {
                     string name = entry.Key;
                     int numCases = entry.Value;
@@ -104,12 +103,12 @@ namespace BFConfigApp
                         if (comboBox != null)
                         {
                             string key = $"{name}{i}";
-                            if (!session.CasesDataHolder.ContainsKey(key))
+                            if (!SessionManager.CurrentCaseSession.CasesDataHolder.ContainsKey(key))
                             {
-                                session.CasesDataHolder[key] = new CaseTypeObject();
+                                SessionManager.CurrentCaseSession.CasesDataHolder[key] = new CaseTypeObject();
                             }
-                            session.CasesDataHolder[key].CaseType = (TypeOfCase)comboBox.SelectedIndex;
-                            session.CasesDataHolder[key].CaseName = key;
+                            SessionManager.CurrentCaseSession.CasesDataHolder[key].CaseType = (TypeOfCase)comboBox.SelectedIndex;
+                            SessionManager.CurrentCaseSession.CasesDataHolder[key].CaseName = key;
                         }
                         else
                         {
