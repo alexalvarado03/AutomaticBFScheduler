@@ -56,9 +56,10 @@ namespace BFConfigApp.Data
 
         public bool IsTableTop { get; set; } //bool to say if the fair is table top fair
 
-        public Infrastructure selectedInfra { get; set; } //enum that holds the infrastructure value
+        public Infrastructure SelectedInfra { get; set; } //enum that holds the infrastructure value
 
         public Dictionary<string, CaseTypeObject> CasesDataHolder { get; set; } = new(); //Dictionary to hold case object **Each case will need its own UNIQUE name**
+                                                                                         //Connects to CaseDetails in CaseConfiguration
 
         public string ConfigurationName { get; set; } = string.Empty; // holds the name of the configuration
 

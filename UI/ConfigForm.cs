@@ -241,7 +241,7 @@ namespace BFConfigApp
                     {
                         if (radio.Tag is Infrastructure infra)
                         {
-                            SessionManager.CurrentCaseSession.selectedInfra = infra;
+                            SessionManager.CurrentCaseSession.SelectedInfra = infra;
                         }
                         else
                         {
